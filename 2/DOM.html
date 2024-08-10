@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM</title>
+</head>
+<!--<body>-->
+<!--document.getElementById или просто id-->
+
+<!--Правда о лосях.-->
+<!--<ol>-->
+<!--  <li>Лось &#45;&#45; животное хитрое</li>-->
+<!--   комментарий-->
+<!--  <li>...и коварное!</li>-->
+<!--</ol>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--GETELEMENTBYID-->
+<!--<div id="elem">-->
+<!--  <div id="elem-content">Element</div>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    // получить элемент-->
+<!--    let elem = document.getElementById('elem');-->
+
+<!--    // сделать его фон красным-->
+<!--    elem.style.background = 'red';-->
+<!--</script>-->
+
+<!--<div id="elem">-->
+<!--  <div id="elem-content">Элемент</div>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    // elem - ссылка на элемент с id="elem"-->
+<!--    elem.style.background = 'red';-->
+
+<!--    // внутри id="elem-content" есть дефис, так что такой id не может служить именем переменной-->
+<!--    // ...но мы можем обратиться к нему через квадратные скобки: window['elem-content']-->
+<!--</script>-->
+
+<!--<div id="elem"></div>-->
+
+<!--<script>-->
+<!--    let elem = 5; // теперь elem равен 5, а не <div id="elem">-->
+
+<!--    alert(elem); // 5-->
+<!--</script>-->
+
+
+<!--samii universalnii metod poiska querySelectorAll-->
+<!--<body>-->
+<!--<ul>-->
+<!--  <li>Этот</li>-->
+<!--  <li>тест</li>-->
+<!--</ul>-->
+<!--<ul>-->
+<!--  <li>полностью</li>-->
+<!--  <li>пройден</li>-->
+<!--</ul>-->
+
+<!--<script>-->
+<!--    let elements = document.querySelectorAll('ul > li:last-child');-->
+
+<!--    for (let elem of elements) {-->
+<!--        alert(elem.innerHTML); // "тест", "пройден"-->
+<!--    }-->
+
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--poisk querySelector-->
+
+<!--<body>-->
+<!--<ul>-->
+<!--  <li>Этот</li>-->
+<!--  <li>тест</li>-->
+<!--</ul>-->
+<!--<ul>-->
+<!--  <li>полностью</li>-->
+<!--  <li>пройден</li>-->
+<!--</ul>-->
+
+<!--<script>-->
+<!--    let elements = document.querySelector("ul>li");-->
+
+<!--    for (let elem of elements) {-->
+<!--        alert(elem.innerHTML); // "тест", "пройден"-->
+<!--    }-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--matches-->
+<!--<a href="http://example.com/file.zip">...</a>-->
+<!--<a href="http://ua.ru">...</a>-->
+
+<!--<script>-->
+<!--    // может быть любая коллекция вместо document.body.children-->
+<!--    for (let elem of document.body.children) {-->
+<!--        if (elem.matches('a[href$="zip"]')) {-->
+<!--            alert("Ссылка на архив: " + elem.href );-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--closest-->
+<!--<h1>Содержание</h1>-->
+<!--<div class="contents">-->
+<!--  <ul class="book">-->
+<!--    <li class="chapter">Глава 1</li>-->
+<!--    <li class="chapter">Глава 2</li>-->
+<!--  </ul>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    let chapter = document.querySelector('.chapter'); // LI-->
+<!--console.log(chapter);-->
+<!--    console.log(chapter.closest('.book')); // UL-->
+<!--    console.log(chapter.closest('.contents')); // DIV-->
+<!--    console.log(chapter.closest('h1')); // null (потому что h1 - не предок)-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--getElementsBy-->
+<!--<table id="table">-->
+<!--  <tr>-->
+<!--    <td>Ваш возраст:</td>-->
+
+<!--    <td>-->
+<!--      <label>-->
+<!--        <input class="article" type="radio" name="age" value="young" checked> младше 18-->
+<!--      </label>-->
+<!--      <label>-->
+<!--        <input type="radio" name="age" value="mature"> от 18 до 50-->
+<!--      </label>-->
+<!--      <label>-->
+<!--        <input type="radio" name="age" value="senior"> старше 60-->
+<!--      </label>-->
+<!--    </td>-->
+<!--  </tr>-->
+<!--</table>-->
+
+<!--<script>-->
+<!--    let inputs = table.getElementsByTagName('input');-->
+
+<!--    for (let input of inputs) {-->
+<!--        alert( input.value + ': ' + input.checked );-->
+<!--    }-->
+<!--    // получить все элементы input в документе-->
+<!--    let divs = document.querySelectorAll('input');-->
+<!--    console.log(divs);-->
+<!--    // Нужно перебрать коллекцию в цикле или получить элемент по номеру и уже ему присваивать значение, например, так:-->
+<!--    // работает (если есть input)-->
+<!--   let doc = document.getElementsByTagName('input')[0].value = 5;-->
+<!--    console.log(doc);-->
+<!--    // ищем по имени атрибута-->
+<!--    let form = document.getElementsByName('my-form')[0];-->
+<!--    console.log(form);-->
+<!--    // ищем по классу внутри form-->
+<!--    let articles = table.getElementsByClassName('article');-->
+<!--    console.log(articles.length);-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+<!--</body>-->
+
+
+<head>
+  <style type="text/css" id="operaUserStyle"></style>
+</head>
+<body>
+<form name="search">
+
+  <label>Search the site:
+    <input type="text" name="search">
+  </label>
+  <input type="submit" value="Search!">
+</form>
+
+<hr>
+
+<form name="search-person">
+  Search the visitors:
+  <table id="age-table">
+    <tbody><tr>
+      <td>Age:</td>
+      <td id="age-list">
+        <label>
+          <input type="radio" name="age" value="young">less than 18</label>
+        <label>
+          <input type="radio" name="age" value="mature">18-50</label>
+        <label>
+          <input type="radio" name="age" value="senior">more than 50</label>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Additionally:</td>
+      <td>
+        <input type="text" name="info[0]">
+        <input type="text" name="info[1]">
+        <input type="text" name="info[2]">
+      </td>
+    </tr>
+
+    </tbody></table>
+
+  <input type="submit" value="Search!">
+</form>
+
+<script>
+    // Таблицу с id="age-table".
+    let table = document.getElementById('age-table');
+    console.log(table);
+    // Все элементы label внутри этой таблицы (их три).
+    let a = table.getElementsByTagName('label');
+    console.log(a);
+    let k = document.querySelectorAll('#age-table label');
+    console.log(k);
+    // Первый td в этой таблице (со словом «Age»).
+    let b = table.querySelector('td');
+    console.log(b); // ili tak
+    let  c = table.getElementsByTagName('td')[0];
+    console.log(c);
+    // Форму form с именем name="search".
+    let form = document.getElementsByName('search')[0];
+    console.log(form);
+    let f =document.querySelector('form[name = "search"]');
+    console.log(f);
+    // 5. Первый input в этой форме
+    let l = form.getElementsByTagName('input')[0]
+    console.log(l);
+    // или
+    let  r = form.querySelector('input')
+    console.log(r);
+    // 6. Последний input в этой форме
+    let inputs = form.querySelectorAll('input'); // найти все input
+    let input = [inputs.length-1]; // взять последний
+    console.log(input);
+</script>
+</body>
+</html>
+
